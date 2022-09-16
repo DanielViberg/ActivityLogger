@@ -2,7 +2,7 @@
 BASE_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 #First prompt
-gnome-terminal --title="Activity Logger" -- $BASE_DIR/start.sh &
+gnome-terminal --geometry=50x20 --title="Activity Logger" -- $BASE_DIR/start.sh &
 
 dbus-monitor --session "type='signal',interface='org.gnome.ScreenSaver'" |
 while read x; do

@@ -10,28 +10,33 @@ center() {
 }
 
 tput bold 
-center ' --- Activities: --- '
+center ' --- Commands: --- '
 tput sgr0
 
 available_activites=$(watson projects)
-available_activites="no_activity start_new_activity ${available_activites}"
+available_activites="no_activity start_new_activity remove_activity ${available_activites}"
 stringarray=($available_activites)
 
 for i in "${!stringarray[@]}"
 do
     echo "  "$i"." "${stringarray[$i]}"
+    if (($i == 2)); then 
+        tput bold 
+        center ' --- Activities: --- '
+        tput sgr0
+    fi
 done
 tput bold 
 center " --- "
 tput sgr0
-echo "Select activity to start [index]:"
+echo "Selection [index]:"
 read indexSelection
 
 if ! [[ "$indexSelection" =~ ^[0-9]+$ ]] ; 
  then exec >&2; echo "Error: Not a number"; clear; ./$0
 fi
 
-if (($indexSelection > 1)); then
+if (($indexSelection > 2)); then
     echo "${stringarray[$indexSelection]}"
     notify-send -i dialog-information "Activity Logger" "Activity ${stringarray[$indexSelection]} has been started"
     watson start ${stringarray[$indexSelection]}
@@ -40,4 +45,8 @@ fi
 
 if (($indexSelection == 1)); then
     $BASE_DIR/start_new_activity.sh
+fi
+
+if (($indexSelection == 2)); then
+    $BASE_DIR/remove_activity.sh
 fi
