@@ -14,7 +14,7 @@ while read x; do
       ;;
     *"boolean false"*)
       if ! pidof -x $BASE_DIR/start.sh >/dev/null; then
-        gnome-terminal --title="Activity Logger" -- $BASE_DIR/start.sh
+        gnome-terminal --geometry=50x20 --title="Activity Logger" -- $BASE_DIR/start.sh
       fi 
       ;; 
   esac

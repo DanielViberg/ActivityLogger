@@ -1,7 +1,17 @@
 #!/bin/bash
 BASE_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-echo -e 'Activities:\n'
+center() {
+  echo ""
+  termwidth="$(tput cols)"
+  padding="$(printf '%0.1s' ' '{1..500})"
+  printf '%*.*s %s %*.*s\n' 0 "$(((termwidth-2-${#1})/2))" "$padding" "$1" 0 "$(((termwidth-1-${#1})/2))" "$padding"
+  echo ""
+}
+
+tput bold 
+center ' --- Activities: --- '
+tput sgr0
 
 available_activites=$(watson projects)
 available_activites="no_activity start_new_activity ${available_activites}"
@@ -11,7 +21,9 @@ for i in "${!stringarray[@]}"
 do
     echo "  "$i"." "${stringarray[$i]}"
 done
-echo -e "\n"
+tput bold 
+center " --- "
+tput sgr0
 echo "Select activity to start [index]:"
 read indexSelection
 
