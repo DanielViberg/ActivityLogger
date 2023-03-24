@@ -38,7 +38,7 @@ fi
 
 if (($indexSelection > 2)); then
     echo "${stringarray[$indexSelection]}"
-    notify-send -i dialog-information "Activity Logger" "Activity ${stringarray[$indexSelection]} has been started"
+    notify-send -t 5000 -i dialog-information "Activity Logger" "Activity ${stringarray[$indexSelection]} has been started"
     watson start ${stringarray[$indexSelection]}
     exit 1
 fi

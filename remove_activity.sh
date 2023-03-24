@@ -55,7 +55,7 @@ if [ "${yes_no}" == "y" ]; then
         watson remove -f ${frame_id_array[$i]}
     done
 
-    notify-send -i dialog-information "Activity Logger" "Activity ${selection} has been removed"
+    notify-send -t 5000 -i dialog-information "Activity Logger" "Activity ${selection} has been removed"
     clear
     $BASE_DIR/start.sh
 else
