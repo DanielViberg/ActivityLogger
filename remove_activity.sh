@@ -37,7 +37,7 @@ clear
 echo "Are your sure you want to delete all registrations of this activity? [y/n]"
 read yes_no
 if [ "${yes_no}" == "y" ]; then
-    frames=$(watson log --project $selection)
+    frames=$(watson log --all --project $selection)
     framesarray=($frames)
     frame_ids=""
     for i in "${!framesarray[@]}"
@@ -52,10 +52,11 @@ if [ "${yes_no}" == "y" ]; then
     frame_id_array=($frame_ids)
     for i in "${!frame_id_array[@]}"
     do
+        echo "Removing frame: ${frame_id_array[$i]}"
         watson remove -f ${frame_id_array[$i]}
     done
-
-    notify-send -t 5000 -i dialog-information "Activity Logger" "Activity ${selection} has been removed"
+      echo "Removing activity: $selection"
+    sleep 2
     clear
     $BASE_DIR/start.sh
 else
