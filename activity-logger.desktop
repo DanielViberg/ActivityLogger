@@ -2,7 +2,7 @@
 Type=Application
 Exec=/home/daniel/repos/DanielViberg/ActivityLogger/worker.sh &
 Hidden=false
-NoDisplay=fales
+NoDisplay=false
 X-GNOME-Autostart-enabled=true
 Name[en_US]=Activity Logger
 Name=Activity Logger

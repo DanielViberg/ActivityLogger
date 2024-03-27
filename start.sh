@@ -37,9 +37,9 @@ if ! [[ "$indexSelection" =~ ^[0-9]+$ ]] ;
 fi
 
 if (($indexSelection > 2)); then
-    echo "${stringarray[$indexSelection]}"
-    notify-send -t 5000 -i dialog-information "Activity Logger" "Activity ${stringarray[$indexSelection]} has been started"
+    echo 
     watson start ${stringarray[$indexSelection]}
+    sleep 3
     exit 1
 fi
 
