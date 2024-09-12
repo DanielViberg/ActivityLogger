@@ -18,13 +18,13 @@ center ' --- Commands: --- '
 tput sgr0
 
 available_activites=$(watson projects)
-available_activites="no_activity start_new_activity remove_activity stop_activity get_report ${available_activites}"
+available_activites="no_activity start_new_activity remove_activity stop_activity ${available_activites}"
 stringarray=($available_activites)
 
 for i in "${!stringarray[@]}"
 do
     echo "  "$i"." "${stringarray[$i]}"
-    if (($i == 4)); then 
+    if (($i == 3)); then 
         tput bold 
         center ' --- Activities: --- '
         tput sgr0
@@ -40,7 +40,7 @@ if ! [[ "$indexSelection" =~ ^[0-9]+$ ]] ;
  then exec >&2; echo "Error: Not a number"; clear; ./$0
 fi
 
-if (($indexSelection > 4)); then
+if (($indexSelection > 3)); then
     echo 
     watson start ${stringarray[$indexSelection]}
     sleep 3
@@ -57,8 +57,4 @@ fi
 
 if (($indexSelection == 3)); then
     $BASE_DIR/stop.sh
-fi
-
-if (($indexSelection == 4)); then
-    $BASE_DIR/get_report.sh
 fi
