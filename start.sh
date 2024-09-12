@@ -1,4 +1,5 @@
 #!/bin/bash
+sleep 0.1 
 BASE_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 center() {
@@ -9,7 +10,10 @@ center() {
   echo ""
 }
 
+
+
 tput bold 
+center 'Activity Logger'
 center ' --- Commands: --- '
 tput sgr0
 
