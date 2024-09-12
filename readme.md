@@ -6,5 +6,6 @@ A lightweight bash script used to help the user to register time spent on a subj
 - watson https://tailordev.github.io/Watson/
 
 ## Usage
-- ln -s activity-logger.service to  /etc/systemd/system/
+- Install sleep and shutdown services to etc/systemd/system/
+- Install start service to ~/.config/systemd/user/
 - Add activity-logger.sh to .bashrc

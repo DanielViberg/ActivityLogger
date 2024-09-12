@@ -1,0 +1,13 @@
+[Unit]
+Before=shutdown.target
+
+[Service]
+User=daniel
+Type=oneshot
+Environment="PATH=/home/daniel/.local/bin"
+ExecStart=/bin/sh -c '/home/daniel/repos/DanielViberg/ActivityLogger/stop.sh || true'
+RemainAfterExit=false
+ExecStartPost=sleep 1 
+
+[Install]
+WantedBy=shutdown.target

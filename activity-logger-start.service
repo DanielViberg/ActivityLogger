@@ -1,0 +1,10 @@
+[Unit]
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+Environment="PATH=/home/daniel/.local/bin:/usr/bin"
+ExecStart=/home/daniel/repos/DanielViberg/ActivityLogger/activity_logger.sh start
+
+[Install]
+WantedBy=default.target
